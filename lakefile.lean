@@ -17,7 +17,7 @@ require Straume from git
 
 @[default_target]
 lean_exe megaparsec where
-  root := "Main"
+  root := `Main
 
 lean_exe Tests.Parsec
 lean_exe Tests.IO
