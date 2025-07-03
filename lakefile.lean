@@ -16,9 +16,8 @@ require Straume from git
   "https://github.com/lurk-lab/straume" @ "053d9feccbface9a0b2c1a72447914376aac74ea"
 
 @[default_target]
-lean_exe megaparsec {
+lean_exe megaparsec where
   root := "Main"
-}
 
 lean_exe Tests.Parsec
 lean_exe Tests.IO
