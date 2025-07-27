@@ -1,3 +1,5 @@
+import Batteries.Data.RBMap
+
 import Megaparsec.Err
 import Megaparsec.Errors
 import Megaparsec.Errors.Bundle
@@ -15,6 +17,8 @@ import Straume.Iterator
 namespace Megaparsec.Parsec
 
 universe u
+
+open Batteries (RBSet)
 
 open Megaparsec.Err
 open Megaparsec.Errors
@@ -139,7 +143,7 @@ open StreamErrors in
 open Outcome in
 instance [Ord β] : Alternative (ParsecT m β ℘ E) where
   failure := fun _ s _ _ _ eerr =>
-    let empty : Std.RBSet (ErrorItem β) compare := default
+    let empty : RBSet (ErrorItem β) compare := default
     eerr.2 (.trivial s.offset .none empty) s
   orElse guess thunk :=
     fun xi s cok cerr eok eerr =>

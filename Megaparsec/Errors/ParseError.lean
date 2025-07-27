@@ -1,8 +1,8 @@
 import Megaparsec.Errors
 import Megaparsec.Printable
-import Std.Data.RBMap
+import Batteries.Data.RBMap
 
-open Std (RBSet)
+open Batteries (RBSet)
 
 open Megaparsec.Errors
 open Megaparsec.Printable

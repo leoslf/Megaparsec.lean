@@ -1,3 +1,5 @@
+import Batteries.Data.RBMap
+
 import Megaparsec.Errors
 import Megaparsec.Errors.ParseError
 import Megaparsec.Errors.StreamErrors
@@ -12,7 +14,7 @@ import YatimaStdLib.Option
 import YatimaStdLib.RWST
 import YatimaStdLib.Monad
 
-open Std (RBSet)
+open Batteries (RBSet)
 
 open Megaparsec.Errors
 open Megaparsec.Errors.ParseError

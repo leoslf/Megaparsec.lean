@@ -1,5 +1,4 @@
-/build
-/lake-packages
+/.lake
 
 # Ignore nix stuff, just in case?
 /result

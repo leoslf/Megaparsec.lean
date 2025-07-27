@@ -20,6 +20,6 @@ def withHints (hs : Hints β)
   fun e => match e with
   | .trivial pos us hs₀ =>
       -- we insert the given hints into `hs₀`
-      let hs' := (List.join hs).foldl .insert hs₀
+      let hs' := (List.flatten hs).foldl .insert hs₀
       f $ .trivial pos us hs'
   | _ => f e
