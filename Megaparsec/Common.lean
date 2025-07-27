@@ -159,10 +159,10 @@ def anySingle {m : Type u → Type v} {℘ α E β : Type u} [i: MonadParsec m �
   @satisfy m ℘ α E β i (fun _ => true)
 
 def noneOf {m : Type u → Type v} {℘ α E β : Type u} [BEq β] [i: MonadParsec m ℘ α E β] (cs : List β): m β :=
-  @satisfy m ℘ α E β i $ fun c => (cs.indexOf? c).isNone
+  @satisfy m ℘ α E β i $ fun c => (cs.idxOf? c).isNone
 
 def oneOf {m : Type u → Type v} {℘ α E β: Type u} [BEq β] [i: MonadParsec m ℘ α E β] (cs : List β): m β :=
-  @satisfy m ℘ α E β i $ fun c => (cs.indexOf? c).isSome
+  @satisfy m ℘ α E β i $ fun c => (cs.idxOf? c).isSome
 
 /- Even if the parser `p` fails, `option'` succeds without consuming input.
 Otherwise, it succeeds with consuming input. -/
