@@ -7,10 +7,10 @@ package Megaparsec
 lean_lib Megaparsec
 
 require LSpec from git
-  "https://github.com/argumentcomputer/LSpec" @ "24cceb69c20fadca0fd3acabe39fa9270dfb47e6"
+  "https://github.com/leoslf/LSpec" @ "feature/spec"
 
 require Straume from git
-  "https://github.com/leoslf/straume" @ "52056899cc811bc1b3ccdc9c217fc815c3c8b95d"
+  "https://github.com/leoslf/straume" @ "9e09d80b25e3beb8f9ff1e8260ed8e383cf6a21e"
 
 @[default_target]
 lean_exe megaparsec where
