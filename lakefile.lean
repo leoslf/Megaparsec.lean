@@ -1,7 +1,8 @@
 import Lake
 open Lake DSL
 
-package Megaparsec
+package Megaparsec where
+  testDriver := "megaparsec_tests"
 
 @[default_target]
 lean_lib Megaparsec
@@ -10,13 +11,29 @@ require LSpec from git
   "https://github.com/leoslf/LSpec" @ "feature/spec"
 
 require Straume from git
-  "https://github.com/leoslf/straume" @ "9e09d80b25e3beb8f9ff1e8260ed8e383cf6a21e"
+  "https://github.com/leoslf/straume" @ "main"
 
 @[default_target]
 lean_exe megaparsec where
   root := `Main
 
-lean_exe Tests.Parsec
-lean_exe Tests.IO
-lean_exe Tests.StateT
-lean_exe Tests.Lisp
+target GeneratedTestSpec pkg : System.FilePath := do
+  -- NOTE: make sure to .gitignore the file
+  let output := pkg.dir / "Test" / "Spec.lean"
+  let _ <- liftM do
+    IO.Process.run {
+      cmd := "lake"
+      args := #["exe", "lspec-discover", "--source", s!"{pkg.dir / "Test"}", "--destination", s!"{output}"]
+      cwd := pkg.dir
+      inheritEnv := true
+    }
+  return pure output
+
+lean_lib Test
+
+@[default_target]
+lean_exe megaparsec_tests where
+  root := `Test.Spec
+  buildType := .debug
+  needs := #[GeneratedTestSpec]
+  supportInterpreter := true

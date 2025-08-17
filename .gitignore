@@ -1,4 +1,6 @@
-/.lake
+.lake
 
 # Ignore nix stuff, just in case?
 /result
+
+Test/Spec.lean

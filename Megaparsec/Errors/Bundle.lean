@@ -54,6 +54,9 @@ instance [Printable β] [ToString E] [Streamable ℘] : ToString (ParseErrorBund
     let (r, _) := NEList.foldl makePEBfs (id, b.posState) b.errors
     String.drop (r "") 1
 
+instance [ToString (ParseErrorBundle β ℘ E)] : Repr (ParseErrorBundle β ℘ E) where
+  reprPrec e _ := toString e
+
 open Megaparsec.ParserState in
 def toBundle (s : State β ℘ E) (errs : NEList (ParseError β E))
              : ParseErrorBundle β ℘ E :=

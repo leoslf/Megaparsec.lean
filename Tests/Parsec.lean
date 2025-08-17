@@ -7,7 +7,7 @@ import Megaparsec.Errors
 import Megaparsec.Parsec
 import Megaparsec.ParserState
 
-open LSpec
+open LSpec hiding satisfy
 
 open MonadParsec
 open Megaparsec
